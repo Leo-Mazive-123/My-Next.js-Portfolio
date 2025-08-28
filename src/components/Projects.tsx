@@ -128,22 +128,23 @@ export default function Projects() {
         />
       </div>
 
-      {/* Filter Buttons */}
-      <div className="flex justify-center gap-4 mb-12 flex-wrap">
-        {categories.map((cat) => (
-          <button
-            key={cat}
-            className={`px-4 py-2 rounded-full font-medium transition ${
-              activeCategory === cat
-                ? "bg-blue-500 text-white shadow-lg"
-                : "bg-gray-200 text-gray-700 hover:bg-blue-400 hover:text-white"
-            }`}
-            onClick={() => setActiveCategory(cat)}
-          >
-            {cat.charAt(0).toUpperCase() + cat.slice(1)}
-          </button>
-        ))}
-      </div>
+   {/* Filter Buttons */}
+        <div className="flex flex-wrap justify-center gap-4 mb-12 max-w-[240px] mx-auto sm:max-w-none sm:mx-0">
+          {categories.map((cat) => (
+            <button
+              key={cat}
+              className={`px-4 py-2 rounded-full font-medium transition ${
+                activeCategory === cat
+                  ? "bg-blue-500 text-white shadow-lg"
+                  : "bg-gray-200 text-gray-700 hover:bg-blue-400 hover:text-white"
+              }`}
+              onClick={() => setActiveCategory(cat)}
+            >
+              {cat.charAt(0).toUpperCase() + cat.slice(1)}
+            </button>
+          ))}
+        </div>
+
 
       {/* Projects Grid */}
       <div
