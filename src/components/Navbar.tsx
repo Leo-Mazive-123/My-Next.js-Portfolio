@@ -49,8 +49,9 @@ export default function Navbar() {
           className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent cursor-pointer"
           onClick={() => scrollToSection("home")}
         >
-          Leo's Portfolio
+          Leo&apos;s Portfolio
         </h1>
+
         <ul className="flex gap-6 text-lg">
           {["about", "skills", "projects", "contact"].map((id) => (
             <li key={id}>

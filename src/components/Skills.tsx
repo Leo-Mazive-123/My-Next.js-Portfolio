@@ -1,7 +1,8 @@
 "use client";
 import { motion } from "framer-motion";
-import { FaHtml5, FaCss3Alt, FaJsSquare, FaReact, FaPython, FaNodeJs, FaGitAlt, FaDatabase, FaShieldAlt, FaRobot, FaTable, FaMobileAlt, FaCloud, FaPencilRuler, FaCode } from "react-icons/fa";
-import { SiTailwindcss, SiNextdotjs, SiFastapi, SiSupabase } from "react-icons/si";
+import {FaHtml5,FaCss3Alt,FaJsSquare,FaReact,FaPython,FaNodeJs,FaGitAlt,FaDatabase,FaShieldAlt,FaRobot,FaTable,FaMobileAlt,FaCloud,FaPencilRuler,FaCode,
+} from "react-icons/fa";
+import { SiTailwindcss, SiFastapi, SiSupabase } from "react-icons/si"; // Removed unused SiNextdotjs
 
 export default function Skills() {
   return (

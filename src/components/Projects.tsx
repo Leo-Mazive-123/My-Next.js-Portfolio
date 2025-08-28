@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { motion } from "framer-motion";
+import Image from "next/image"; // ✅ Import Next.js Image
 
 const projects = [
   {
@@ -108,25 +109,24 @@ export default function Projects() {
   return (
     <section id="projects" className="min-h-screen bg-white text-gray-900 py-16 px-6">
       {/* Header */}
-  <div className="flex flex-col items-center mb-8">
-  <motion.h2
-    initial={{ opacity: 0, y: 40 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.6 }}
-    viewport={{ once: true }}
-    className="text-4xl font-bold text-blue-600"
-  >
-    My Projects
-  </motion.h2>
-  <motion.div
-    className="w-24 h-1 mt-2 bg-gradient-to-r from-blue-400 to-purple-500 rounded"
-    initial={{ scaleX: 0 }}
-    whileInView={{ scaleX: 1 }}
-    transition={{ duration: 0.6, ease: "easeOut" }}
-    style={{ transformOrigin: "center" }}
-  />
-</div>
-
+      <div className="flex flex-col items-center mb-8">
+        <motion.h2
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-4xl font-bold text-blue-600"
+        >
+          My Projects
+        </motion.h2>
+        <motion.div
+          className="w-24 h-1 mt-2 bg-gradient-to-r from-blue-400 to-purple-500 rounded"
+          initial={{ scaleX: 0 }}
+          whileInView={{ scaleX: 1 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          style={{ transformOrigin: "center" }}
+        />
+      </div>
 
       {/* Filter Buttons */}
       <div className="flex justify-center gap-4 mb-12 flex-wrap">
@@ -145,58 +145,54 @@ export default function Projects() {
         ))}
       </div>
 
+      {/* Projects Grid */}
+      <div
+        className="grid gap-10 justify-center max-w-6xl mx-auto"
+        style={{ gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))" }}
+      >
+        {filteredProjects.map((project, index) => (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 50, scale: 0.95 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 0.6, delay: index * 0.1 }}
+            viewport={{ once: true }}
+            className="bg-gray-50 hover:bg-blue-50 rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 hover:scale-105 transition-all duration-300"
+          >
+            {/* Project Image */}
+            <div className="h-48 w-full relative">
+              <Image
+                src={project.image}
+                alt={project.title}
+                fill
+                className="object-cover transition-transform duration-300 hover:scale-105"
+              />
+            </div>
 
-{/* Projects Grid */}
-<div className="grid gap-10 justify-center max-w-6xl mx-auto"
-     style={{
-       gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))"
-     }}
->
-  {filteredProjects.map((project, index) => (
-    <motion.div
-      key={index}
-      initial={{ opacity: 0, y: 50, scale: 0.95 }}
-      whileInView={{ opacity: 1, y: 0, scale: 1 }}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
-      viewport={{ once: true }}
-      className="bg-gray-50 hover:bg-blue-50 rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 hover:scale-105 transition-all duration-300"
-    >
-      {/* Project Image */}
-      <div className="h-48 w-full overflow-hidden">
-        <img
-          src={project.image}
-          alt={project.title}
-          className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-        />
+            <div className="p-6">
+              <h3 className="text-2xl font-semibold text-blue-600 mb-2">{project.title}</h3>
+              <p className="text-gray-700 mb-4">{project.description}</p>
+              <div className="flex flex-wrap gap-2 mb-4">
+                {project.tech.map((tech, i) => (
+                  <span
+                    key={i}
+                    className="px-3 py-1 text-sm rounded-full bg-blue-200 hover:bg-blue-400 text-blue-800 cursor-default"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+              <a
+                href={project.link}
+                target="_blank"
+                className="inline-block px-4 py-2 bg-blue-500 hover:bg-blue-600 rounded-lg shadow-md text-white font-medium transition-all"
+              >
+                View Project
+              </a>
+            </div>
+          </motion.div>
+        ))}
       </div>
-
-      <div className="p-6">
-        <h3 className="text-2xl font-semibold text-blue-600 mb-2">{project.title}</h3>
-        <p className="text-gray-700 mb-4">{project.description}</p>
-        <div className="flex flex-wrap gap-2 mb-4">
-          {project.tech.map((tech, i) => (
-            <span
-              key={i}
-              className="px-3 py-1 text-sm rounded-full bg-blue-200 hover:bg-blue-400 text-blue-800 cursor-default"
-            >
-              {tech}
-            </span>
-          ))}
-        </div>
-        <a
-          href={project.link}
-          target="_blank"
-          className="inline-block px-4 py-2 bg-blue-500 hover:bg-blue-600 rounded-lg shadow-md text-white font-medium transition-all"
-        >
-          View Project
-        </a>
-      </div>
-    </motion.div>
-  ))}
-</div>
-
-
-
     </section>
   );
 }

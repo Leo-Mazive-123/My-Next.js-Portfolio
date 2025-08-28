@@ -88,9 +88,10 @@ export default function Contact() {
         />
 
         <p className="mt-6 text-gray-600">
-          Have a project or idea in mind? Let's collaborate! Reach out via email, phone,
+          Have a project or idea in mind? Let&apos;s collaborate! Reach out via email, phone,
           or connect on social media.
         </p>
+
       </motion.div>
 
       {/* Contact Cards */}
