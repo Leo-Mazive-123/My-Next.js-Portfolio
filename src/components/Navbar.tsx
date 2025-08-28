@@ -32,6 +32,8 @@ export default function Navbar() {
   const linkClass = (id: string) =>
     `hover:text-blue-400 ${activeSection === id ? "text-blue-400 font-bold" : ""}`;
 
+  const navLinks = ["about", "skills", "projects", "contact"];
+
   return (
     <motion.nav
       initial={{ y: -100 }}
@@ -39,21 +41,22 @@ export default function Navbar() {
       transition={{ duration: 0.7, ease: "easeOut" }}
       className="fixed top-0 left-0 w-full bg-gray-900/80 backdrop-blur-md text-white shadow-lg z-50"
     >
-      <div className="max-w-6xl mx-auto px-6 py-4 flex flex-wrap justify-between items-center gap-4">
+      <div className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+        {/* Logo */}
         <h1
-          className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent cursor-pointer"
+          className="text-2xl sm:text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent cursor-pointer"
           onClick={() => scrollToSection("home")}
         >
           Leo&apos;s Portfolio
         </h1>
 
         {/* Nav Links */}
-        <div className="flex flex-wrap gap-4 justify-end flex-1">
-          {["about", "skills", "projects", "contact"].map((id) => (
+        <div className="grid grid-cols-2 gap-2 text-center sm:flex sm:flex-row sm:gap-6">
+          {navLinks.map((id) => (
             <button
               key={id}
               onClick={() => scrollToSection(id)}
-              className={`text-lg px-2 py-1 rounded ${linkClass(id)}`}
+              className={`px-2 py-1 rounded text-lg sm:text-lg ${linkClass(id)}`}
             >
               {id.charAt(0).toUpperCase() + id.slice(1)}
             </button>
