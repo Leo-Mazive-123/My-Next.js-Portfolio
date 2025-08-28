@@ -44,10 +44,11 @@ export default function Navbar() {
       <div className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
         {/* Logo */}
         <h1
-          className="text-2xl sm:text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent cursor-pointer"
+          className="text-2xl sm:text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent cursor-pointer text-left"
           onClick={() => scrollToSection("home")}
         >
-          Leo&apos;s Portfolio
+          <span className="block sm:inline text-left">Leo&apos;s</span>
+          <span className="block sm:inline text-left">Portfolio</span>
         </h1>
 
         {/* Nav Links */}
