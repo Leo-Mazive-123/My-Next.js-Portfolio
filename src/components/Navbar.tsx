@@ -47,7 +47,7 @@ export default function Navbar() {
           className="text-2xl sm:text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent cursor-pointer text-left"
           onClick={() => scrollToSection("home")}
         >
-          <span className="block sm:inline text-left">Leo&apos;s</span>
+          <span className="block sm:inline text-left">Leo&apos;s </span>
           <span className="block sm:inline text-left">Portfolio</span>
         </h1>
 
