@@ -94,6 +94,15 @@ const projects = [
     link: "https://support-ticket-classifier.vercel.app",
     image: "/projects/support-ticket.png",
   },
+  {
+    title: "Weather Dashboard",
+    description:
+      "A responsive weather dashboard built with Next.js, TypeScript, and OpenWeather API. Displays real-time weather updates by city with a clean UI.",
+    tech: ["Next.js", "TypeScript", "Tailwind CSS", "OpenWeather API"],
+    category: "frontend",
+    link: "https://weather-dashboard-seven-silk.vercel.app",
+    image: "/projects/weather-dashboard.png",
+  },
 ];
 
 const categories = ["all", "frontend", "backend", "fullstack"];
