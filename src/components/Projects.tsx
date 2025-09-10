@@ -103,6 +103,15 @@ const projects = [
     link: "https://weather-dashboard-seven-silk.vercel.app",
     image: "/projects/weather-dashboard.png",
   },
+  {
+    title: "Folktales App",
+    description:
+      "A modern web app that lets users explore folktales from around the world with search, filters, and offline support. Features smooth animations and full-screen reading mode.",
+    tech: ["Next.js", "TypeScript", "Supabase", "Tailwind CSS", "Framer Motion"],
+    category: "fullstack",
+    link: "https://folktale-app.vercel.app",
+    image: "/projects/folktales-app.png", // ✅ Add a screenshot in your public/projects folder
+  },
 ];
 
 const categories = ["all", "frontend", "backend", "fullstack"];
