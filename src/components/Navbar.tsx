@@ -1,13 +1,16 @@
 "use client";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
+import { FaBars, FaTimes } from "react-icons/fa";
 
 export default function Navbar() {
   const [activeSection, setActiveSection] = useState("home");
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const scrollToSection = (id: string) => {
     const section = document.getElementById(id);
     section?.scrollIntoView({ behavior: "smooth" });
+    setMenuOpen(false); // Close menu on link click
   };
 
   useEffect(() => {
@@ -44,20 +47,31 @@ export default function Navbar() {
       <div className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
         {/* Logo */}
         <h1
-          className="text-2xl sm:text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent cursor-pointer text-left"
+          className="text-2xl sm:text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent cursor-pointer"
           onClick={() => scrollToSection("home")}
         >
-          <span className="block sm:inline text-left">Leo&apos;s </span>
-          <span className="block sm:inline text-left">Portfolio</span>
+          <span className="block sm:inline">Leo&apos;s </span>
+          <span className="block sm:inline">Portfolio</span>
         </h1>
 
+        {/* Hamburger / Menu */}
+        <div className="sm:hidden">
+          <button onClick={() => setMenuOpen(!menuOpen)}>
+            {menuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+          </button>
+        </div>
+
         {/* Nav Links */}
-        <div className="grid grid-cols-2 gap-2 text-center sm:flex sm:flex-row sm:gap-6">
+        <div
+          className={`flex flex-col items-center justify-center sm:flex-row sm:flex sm:items-start sm:justify-start gap-4 sm:gap-6 absolute sm:static top-full left-0 w-full sm:w-auto bg-gray-900/90 sm:bg-transparent transition-all duration-300 ease-in-out overflow-hidden ${
+            menuOpen ? "max-h-60 py-4" : "max-h-0"
+          } sm:max-h-full text-center`}
+        >
           {navLinks.map((id) => (
             <button
               key={id}
               onClick={() => scrollToSection(id)}
-              className={`px-2 py-1 rounded text-lg sm:text-lg ${linkClass(id)}`}
+              className={`block px-4 py-2 sm:px-2 sm:py-1 rounded text-lg sm:text-lg ${linkClass(id)}`}
             >
               {id.charAt(0).toUpperCase() + id.slice(1)}
             </button>

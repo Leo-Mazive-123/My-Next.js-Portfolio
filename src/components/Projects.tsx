@@ -1,7 +1,8 @@
 "use client";
 import { useState } from "react";
-import { motion } from "framer-motion";
-import Image from "next/image"; // ✅ Import Next.js Image
+import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
+
 
 const projects = [
   {
@@ -110,19 +111,73 @@ const projects = [
     tech: ["Next.js", "TypeScript", "Supabase", "Tailwind CSS", "Framer Motion"],
     category: "fullstack",
     link: "https://folktale-app.vercel.app",
-    image: "/projects/folktales-app.png", // ✅ Add a screenshot in your public/projects folder
+    image: "/projects/folktales-app.png",
+  },
+  
+   {
+    title: "Quotes Generator",
+    description:
+      "A sleek web app that generates inspiring quotes dynamically, allowing users to explore and share motivational content effortlessly.",
+    tech: ["Next.js", "React", "Tailwind CSS", "Supabase"],
+    category: "fullstack",
+    link: "https://quotes-generator-mauve-ten.vercel.app",
+    image: "/projects/quotes.png",
   },
 ];
+
+
 
 const categories = ["all", "frontend", "backend", "fullstack"];
 
 export default function Projects() {
   const [activeCategory, setActiveCategory] = useState("all");
+  const [visibleCount, setVisibleCount] = useState(3);
 
   const filteredProjects =
     activeCategory === "all"
       ? projects
       : projects.filter((p) => p.category === activeCategory);
+
+  const visibleProjects = filteredProjects.slice(0, visibleCount);
+
+  const handleViewMore = () => {
+    setVisibleCount((prev) => {
+      const newCount = Math.min(prev + 3, filteredProjects.length);
+
+      // Optional: scroll to newly added projects
+      setTimeout(() => {
+        const firstNew = document.querySelector(
+          `#projects .motion-project:nth-child(${prev + 1})`
+        ) as HTMLElement;
+        if (firstNew) {
+          firstNew.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }, 50);
+
+      return newCount;
+    });
+  };
+
+  const handleShowLess = () => {
+  setVisibleCount((prev) => {
+    const remainder = prev % 3 || 3; // projects in last partial row
+    const newCount = Math.max(prev - remainder, 3);
+
+    // Scroll to the last visible project after reducing
+    setTimeout(() => {
+      const lastVisible = document.querySelector(
+        `#projects .motion-project:nth-child(${newCount})`
+      ) as HTMLElement;
+      if (lastVisible) {
+        lastVisible.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }, 50);
+
+    return newCount;
+  });
+};
+
+
 
   return (
     <section id="projects" className="min-h-screen bg-white text-gray-900 py-16 px-6">
@@ -146,71 +201,93 @@ export default function Projects() {
         />
       </div>
 
-   {/* Filter Buttons */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12 max-w-[240px] mx-auto sm:max-w-none sm:mx-0">
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              className={`px-4 py-2 rounded-full font-medium transition ${
-                activeCategory === cat
-                  ? "bg-blue-500 text-white shadow-lg"
-                  : "bg-gray-200 text-gray-700 hover:bg-blue-400 hover:text-white"
-              }`}
-              onClick={() => setActiveCategory(cat)}
-            >
-              {cat.charAt(0).toUpperCase() + cat.slice(1)}
-            </button>
-          ))}
-        </div>
-
+      {/* Filter Buttons */}
+      <div className="flex flex-wrap justify-center gap-4 mb-12 max-w-[240px] mx-auto sm:max-w-none sm:mx-0">
+        {categories.map((cat) => (
+          <button
+            key={cat}
+            className={`px-4 py-2 rounded-full font-medium transition ${
+              activeCategory === cat
+                ? "bg-blue-500 text-white shadow-lg"
+                : "bg-gray-200 text-gray-700 hover:bg-blue-400 hover:text-white"
+            }`}
+            onClick={() => {
+              setActiveCategory(cat);
+              setVisibleCount(3); // reset visible projects on category change
+            }}
+          >
+            {cat.charAt(0).toUpperCase() + cat.slice(1)}
+          </button>
+        ))}
+      </div>
 
       {/* Projects Grid */}
       <div
         className="grid gap-10 justify-center max-w-6xl mx-auto"
         style={{ gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))" }}
       >
-        {filteredProjects.map((project, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, y: 50, scale: 0.95 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 0.6, delay: index * 0.1 }}
-            viewport={{ once: true }}
-            className="bg-gray-50 hover:bg-blue-50 rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 hover:scale-105 transition-all duration-300"
-          >
-            {/* Project Image */}
-            <div className="h-48 w-full relative">
-              <Image
-                src={project.image}
-                alt={project.title}
-                fill
-                className="object-cover transition-transform duration-300 hover:scale-105"
-              />
-            </div>
-
-            <div className="p-6">
-              <h3 className="text-2xl font-semibold text-blue-600 mb-2">{project.title}</h3>
-              <p className="text-gray-700 mb-4">{project.description}</p>
-              <div className="flex flex-wrap gap-2 mb-4">
-                {project.tech.map((tech, i) => (
-                  <span
-                    key={i}
-                    className="px-3 py-1 text-sm rounded-full bg-blue-200 hover:bg-blue-400 text-blue-800 cursor-default"
-                  >
-                    {tech}
-                  </span>
-                ))}
+        <AnimatePresence>
+          {visibleProjects.map((project, index) => (
+            <motion.div
+              key={project.title}
+              className="motion-project bg-gray-50 hover:bg-blue-50 rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 hover:scale-105 transition-all duration-300"
+              initial={{ opacity: 0, y: 50, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 50, scale: 0.95 }}
+              transition={{ duration: 0.5, delay: index * 0.05 }}
+            >
+              <div className="h-48 w-full relative">
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  fill
+                  className="object-cover transition-transform duration-300 hover:scale-105"
+                />
               </div>
-              <a
-                href={project.link}
-                target="_blank"
-                className="inline-block px-4 py-2 bg-blue-500 hover:bg-blue-600 rounded-lg shadow-md text-white font-medium transition-all"
-              >
-                View Project
-              </a>
-            </div>
-          </motion.div>
-        ))}
+              <div className="p-6">
+                <h3 className="text-2xl font-semibold text-blue-600 mb-2">{project.title}</h3>
+                <p className="text-gray-700 mb-4">{project.description}</p>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {project.tech.map((tech, i) => (
+                    <span
+                      key={i}
+                      className="px-3 py-1 text-sm rounded-full bg-blue-200 hover:bg-blue-400 text-blue-800 cursor-default"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+                <a
+                  href={project.link}
+                  target="_blank"
+                  className="inline-block px-4 py-2 bg-blue-500 hover:bg-blue-600 rounded-lg shadow-md text-white font-medium transition-all"
+                >
+                  View Project
+                </a>
+              </div>
+            </motion.div>
+          ))}
+        </AnimatePresence>
+      </div>
+
+      {/* View More / Show Less Buttons */}
+      <div className="flex justify-center mt-8 gap-4">
+        {visibleCount < filteredProjects.length && (
+          <button
+            onClick={handleViewMore}
+            className="px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-lg shadow-md transition-all"
+          >
+            View More
+          </button>
+        )}
+        {visibleCount > 3 && (
+          <button
+            onClick={handleShowLess}
+            className="px-6 py-3 bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold rounded-lg shadow-md transition-all"
+          >
+            Show Less
+          </button>
+        )}
       </div>
     </section>
   );
