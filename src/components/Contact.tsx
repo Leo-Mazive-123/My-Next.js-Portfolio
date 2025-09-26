@@ -188,7 +188,7 @@ export default function Contact() {
   );
 }
 
-/* ----------------- Small Card Component ----------------- */
+//* ----------------- Small Card Component ----------------- */
 function ContactCard({
   icon,
   label,
@@ -202,18 +202,42 @@ function ContactCard({
   href: string;
   external?: boolean;
 }) {
+  const [copied, setCopied] = useState(false);
+  const [copiedMessage, setCopiedMessage] = useState("");
+
+  const handleCopy = async (e: React.MouseEvent) => {
+    e.preventDefault(); // Prevent default link behavior
+    try {
+      await navigator.clipboard.writeText(value);
+      setCopiedMessage(`${label} copied!`);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000); // Hide message after 2s
+    } catch {
+      alert("Failed to copy!");
+    }
+  };
+
+  const isCopyable = label === "Email" || label === "Phone";
+
   return (
     <a
-      href={href}
+      href={external ? href : "#"}
       target={external ? "_blank" : undefined}
       rel={external ? "noreferrer" : undefined}
-      className="group rounded-2xl bg-gray-100 border border-gray-300 hover:border-blue-500 hover:bg-gray-50 transition p-5 flex flex-col items-center text-center shadow hover:shadow-blue-200"
+      onClick={isCopyable ? handleCopy : undefined}
+      className="group relative rounded-2xl bg-gray-100 border border-gray-300 hover:border-blue-500 hover:bg-gray-50 transition p-5 flex flex-col items-center text-center shadow hover:shadow-blue-200 cursor-pointer"
     >
       <div className="mb-3 inline-flex h-12 w-12 items-center justify-center rounded-full bg-blue-100 text-blue-500 group-hover:bg-blue-200">
         {icon}
       </div>
       <h3 className="text-sm uppercase tracking-wide text-gray-500">{label}</h3>
       <p className="mt-1 font-medium text-gray-900">{value}</p>
+
+      {copied && (
+        <span className="absolute top-2 right-2 text-xs bg-green-500 text-white px-2 py-1 rounded">
+          {copiedMessage}
+        </span>
+      )}
     </a>
   );
 }
