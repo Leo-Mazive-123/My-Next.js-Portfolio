@@ -6,13 +6,76 @@ import Image from "next/image";
 
 const projects = [
   {
+    title: "Support Ticket Classification System",
+    description:
+      "A web app that allows users to submit support tickets and automatically classifies them into departments (IT, HR, Finance) using Supabase and a simple frontend model built with Next.js.",
+    tech: ["Next.js", "Tailwind CSS", "Supabase", "Machine Learning"],
+    category: "fullstack",
+    link: "https://support-ticket-classifier.vercel.app",
+    image: "/projects/support-ticket.png",
+  },
+  {
+    title: "Quiz Web App",
+    description:
+      "Interactive quiz application using HTML, CSS, and JavaScript that tests user knowledge in a fun way.",
+    tech: ["HTML", "CSS", "JavaScript"],
+    category: "frontend",
+    link: "https://leo-mazive-123.github.io/Quiz-App-Project/",
+    image: "/projects/quiz-app.png",
+  },
+  {
+    title: "Quotes Generator",
+    description:
+      "A sleek web app that generates inspiring quotes dynamically, allowing users to explore and share motivational content effortlessly.",
+    tech: ["Next.js", "React", "Tailwind CSS", "Supabase"],
+    category: "fullstack",
+    link: "https://quotes-generator-mauve-ten.vercel.app",
+    image: "/projects/quotes.png",
+  },
+  {
+    title: "Weather Dashboard",
+    description:
+      "A responsive weather dashboard built with Next.js, TypeScript, and OpenWeather API. Displays real-time weather updates by city with a clean UI.",
+    tech: ["Next.js", "TypeScript", "Tailwind CSS", "OpenWeather API"],
+    category: "frontend",
+    link: "https://weather-dashboard-seven-silk.vercel.app",
+    image: "/projects/weather-dashboard.png",
+  },
+  {
+    title: "Folktales App",
+    description:
+      "A modern web app that lets users explore folktales from around the world with search, filters, and offline support. Features smooth animations and full-screen reading mode.",
+    tech: ["Next.js", "TypeScript", "Supabase", "Tailwind CSS", "Framer Motion"],
+    category: "fullstack",
+    link: "https://folktale-app.vercel.app",
+    image: "/projects/folktales-app.png",
+  },
+  {
+    title: "Calculator",
+    description:
+      "A simple calculator built with HTML, CSS, and JavaScript for basic arithmetic operations.",
+    tech: ["HTML", "CSS", "JavaScript"],
+    category: "frontend",
+    link: "https://leo-mazive-123.github.io/Calculator-Project/",
+    image: "/projects/calculator.png",
+  },
+  {
+    title: "Bakers Inn Website",
+    description:
+      "A Next.js + Tailwind CSS bakery site with modern design and smooth navigation. Includes Products, Recipes, and Kid’s Corner pages.",
+    tech: ["Next.js", "Tailwind CSS"],
+    category: "fullstack",
+    link: "https://bakers-inn-project-nextjs-git-master-leo-mazives-projects.vercel.app",
+    image: "/projects/bakers-inn.png",
+  },
+  {
     title: "Song Lyrics Web Page",
     description:
       "A simple HTML web page showcasing song lyrics in a clean and readable format. Demonstrates HTML fundamentals and structured content creation.",
     tech: ["HTML"],
     category: "frontend",
     link: "https://leo-mazive-123.github.io/Song-Lyrics-Web/",
-    image: "/projects/song-lyrics.png",
+    image: "/projects/song.png",
   },
   {
     title: "Payslip Generator",
@@ -51,15 +114,6 @@ const projects = [
     image: "/projects/bootstrap-remake.png",
   },
   {
-    title: "Calculator",
-    description:
-      "A simple calculator built with HTML, CSS, and JavaScript for basic arithmetic operations.",
-    tech: ["HTML", "CSS", "JavaScript"],
-    category: "frontend",
-    link: "https://leo-mazive-123.github.io/Calculator-Project/",
-    image: "/projects/calculator.png",
-  },
-  {
     title: "Tigzozo Media",
     description:
       "Photography studio design concept showcasing clean layouts and appealing visuals using HTML and CSS.",
@@ -68,61 +122,7 @@ const projects = [
     link: "https://leo-mazive-123.github.io/Tigzozo-Media/",
     image: "/projects/tigzozo-media.png",
   },
-  {
-    title: "Quiz Web App",
-    description:
-      "Interactive quiz application using HTML, CSS, and JavaScript that tests user knowledge in a fun way.",
-    tech: ["HTML", "CSS", "JavaScript"],
-    category: "frontend",
-    link: "https://leo-mazive-123.github.io/Quiz-App-Project/",
-    image: "/projects/quiz-app.png",
-  },
-  {
-    title: "Bakers Inn Website",
-    description:
-      "A Next.js + Tailwind CSS bakery site with modern design and smooth navigation. Includes Products, Recipes, and Kid’s Corner pages.",
-    tech: ["Next.js", "Tailwind CSS"],
-    category: "fullstack",
-    link: "https://bakers-inn-project-nextjs-git-master-leo-mazives-projects.vercel.app",
-    image: "/projects/bakers-inn.png",
-  },
-  {
-    title: "Support Ticket Classification System",
-    description:
-      "A web app that allows users to submit support tickets and automatically classifies them into departments (IT, HR, Finance) using Supabase and a simple frontend model built with Next.js.",
-    tech: ["Next.js", "Tailwind CSS", "Supabase", "Machine Learning"],
-    category: "fullstack",
-    link: "https://support-ticket-classifier.vercel.app",
-    image: "/projects/support-ticket.png",
-  },
-  {
-    title: "Weather Dashboard",
-    description:
-      "A responsive weather dashboard built with Next.js, TypeScript, and OpenWeather API. Displays real-time weather updates by city with a clean UI.",
-    tech: ["Next.js", "TypeScript", "Tailwind CSS", "OpenWeather API"],
-    category: "frontend",
-    link: "https://weather-dashboard-seven-silk.vercel.app",
-    image: "/projects/weather-dashboard.png",
-  },
-  {
-    title: "Folktales App",
-    description:
-      "A modern web app that lets users explore folktales from around the world with search, filters, and offline support. Features smooth animations and full-screen reading mode.",
-    tech: ["Next.js", "TypeScript", "Supabase", "Tailwind CSS", "Framer Motion"],
-    category: "fullstack",
-    link: "https://folktale-app.vercel.app",
-    image: "/projects/folktales-app.png",
-  },
   
-   {
-    title: "Quotes Generator",
-    description:
-      "A sleek web app that generates inspiring quotes dynamically, allowing users to explore and share motivational content effortlessly.",
-    tech: ["Next.js", "React", "Tailwind CSS", "Supabase"],
-    category: "fullstack",
-    link: "https://quotes-generator-mauve-ten.vercel.app",
-    image: "/projects/quotes.png",
-  },
 ];
 
 
@@ -242,11 +242,17 @@ export default function Projects() {
           &#8592;
         </button>
 
-        {/* Projects List */}
-        <div
-          ref={scrollRef}
-          className="flex flex-row gap-4 overflow-x-auto overflow-y-hidden scroll-smooth snap-x snap-mandatory sm:p-4 sm:-mx-4 md:grid md:grid-cols-3 md:gap-10 md:overflow-visible md:snap-none"
-        >
+{/* Projects List */}
+<div
+  ref={scrollRef}
+  className={`flex flex-row gap-4 overflow-x-auto overflow-y-hidden scroll-smooth snap-x snap-mandatory sm:p-4 sm:-mx-4
+    md:grid md:gap-10 md:overflow-visible md:snap-none
+    ${visibleProjects.length === 1 ? "md:grid-cols-1 md:justify-items-center" : ""}
+    ${visibleProjects.length === 2 ? "md:grid-cols-2 md:justify-items-center" : ""}
+    ${visibleProjects.length >= 3 ? "md:grid-cols-3" : ""}`}
+>
+
+
           <AnimatePresence>
             {visibleProjects.map((project, index) => (
               <motion.div
@@ -290,6 +296,7 @@ export default function Projects() {
             ))}
           </AnimatePresence>
         </div>
+        
 
         {/* Right Arrow (mobile) */}
         <button
@@ -322,16 +329,6 @@ export default function Projects() {
     </section>
   );
 }
-
-
-
-
-
-
-
-
-
-
 
 
 
