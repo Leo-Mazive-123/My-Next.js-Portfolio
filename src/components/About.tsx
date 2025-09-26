@@ -1,7 +1,17 @@
 "use client";
 import { motion } from "framer-motion";
+import { MouseEvent } from "react";
 
 export default function About() {
+  // Smooth scroll function
+  const scrollToProjects = (e: MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const section = document.getElementById("projects");
+    if (!section) return;
+
+    section.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
   return (
     <section
       id="about"
@@ -53,8 +63,10 @@ export default function About() {
           others, and exploring creative ideas that make an impact.
         </p>
 
+        {/* Smooth scroll button */}
         <motion.a
           href="#projects"
+          onClick={scrollToProjects}
           whileHover={{ scale: 1.05 }}
           className="inline-block mt-4 px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg transition font-medium"
         >

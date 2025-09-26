@@ -245,7 +245,7 @@ export default function Projects() {
         {/* Projects List */}
         <div
           ref={scrollRef}
-          className="flex flex-row gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory sm:p-4 sm:-mx-4 md:grid md:grid-cols-3 md:gap-10 md:overflow-visible md:snap-none"
+          className="flex flex-row gap-4 overflow-x-auto overflow-y-hidden scroll-smooth snap-x snap-mandatory sm:p-4 sm:-mx-4 md:grid md:grid-cols-3 md:gap-10 md:overflow-visible md:snap-none"
         >
           <AnimatePresence>
             {visibleProjects.map((project, index) => (

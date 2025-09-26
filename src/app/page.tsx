@@ -1,3 +1,6 @@
+"use client"; // ← add this at the very top
+
+import { MouseEvent } from "react";
 import Navbar from "@/components/Navbar";
 import About from "@/components/About";
 import Skills from "@/components/Skills";
@@ -6,6 +9,15 @@ import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
 export default function Home() {
+  const scrollToProjects = (e: MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+
+    const section = document.getElementById("projects");
+    if (!section) return;
+
+    section.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
   return (
     <main className="min-h-screen text-gray-100">
       <Navbar />
@@ -33,6 +45,7 @@ export default function Home() {
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="#projects"
+              onClick={scrollToProjects}
               className="px-6 py-3 text-lg font-medium bg-blue-500 hover:bg-blue-600 rounded-full shadow-lg transition"
             >
               View My Work
