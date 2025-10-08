@@ -51,7 +51,7 @@ export default function Home() {
               View My Work
             </a>
             <a
-              href="/Leo-Mazive-CV.pdf"
+              href="/Leo T. Mazive Resume 2.pdf"
               download
               className="px-6 py-3 text-lg font-medium border border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-white rounded-full shadow-lg transition"
             >
