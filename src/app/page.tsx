@@ -1,5 +1,4 @@
 "use client";
-
 import { MouseEvent } from "react";
 import { Typewriter } from "react-simple-typewriter";
 import Navbar from "@/components/Navbar";
@@ -12,10 +11,8 @@ import Footer from "@/components/Footer";
 export default function Home() {
   const scrollToProjects = (e: MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-
     const section = document.getElementById("projects");
     if (!section) return;
-
     section.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
@@ -91,21 +88,3 @@ export default function Home() {
     </main>
   );
 }
-
-
-{/* <p className="mt-4 sm:mt-6 text-lg sm:text-xl md:text-2xl text-gray-100 font-semibold">
-      I’m a{" "}
-      <span className="text-blue-400 font-bold font-fredoka">
-        <Typewriter
-          words={["Full Stack Developer", "React Enthusiast", "Problem Solver"]}
-          loop={0}
-          cursor
-          cursorStyle="_"
-          typeSpeed={70}
-          deleteSpeed={50}
-          delaySpeed={1000}
-        />
-      </span>
-      <br />
-      building amazing digital experiences ✨
-    </p> */}
