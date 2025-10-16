@@ -49,7 +49,7 @@ export default function About() {
         {/* Paragraphs */}
         <p className="text-lg sm:text-xl leading-relaxed text-gray-700 mb-4">
           Hey, I’m <strong className="text-blue-500">Leo Mazive</strong>, a{" "}
-          <strong>Full Stack Developer</strong> who loves turning ideas into sleek,
+          <strong>Software Developer</strong> who loves turning ideas into sleek,
           high-performance web experiences. I craft dynamic applications using{" "}
           <span className="text-purple-500 font-medium">
             Next.js, React, Tailwind, FastAPI,

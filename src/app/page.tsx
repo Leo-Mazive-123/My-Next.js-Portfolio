@@ -1,6 +1,7 @@
-"use client"; // ← add this at the very top
+"use client";
 
 import { MouseEvent } from "react";
+import { Typewriter } from "react-simple-typewriter";
 import Navbar from "@/components/Navbar";
 import About from "@/components/About";
 import Skills from "@/components/Skills";
@@ -33,11 +34,24 @@ export default function Home() {
 
         {/* Hero Content */}
         <div className="relative z-10 flex flex-col items-center">
-          <h1 className="text-5xl md:text-7xl font-extrabold bg-gradient-to-r from-blue-500 to-purple-700 bg-clip-text text-transparent">
+          <h1 className="text-5xl md:text-7xl font-extrabold bg-gradient-to-r from-blue-500 to-purple-700 bg-clip-text text-transparent font-fredoka">
             Hi, I’m Leo Mazive
           </h1>
-          <p className="mt-6 text-xl md:text-2xl text-gray-100">
-            A passionate <span className="text-blue-400">Full Stack Developer</span> <br />
+
+          <p className="mt-3 text-xl md:text-2xl text-gray-100">
+            I’m a{" "}
+            <span className="text-blue-400 font-fredoka font-bold">
+              <Typewriter
+                words={["Software Developer", "React Enthusiast", "Problem Solver"]}
+                loop={0}
+                cursor
+                cursorStyle="_"
+                typeSpeed={70}
+                deleteSpeed={50}
+                delaySpeed={1000}
+              />
+            </span>
+            <br />
             building amazing digital experiences ✨
           </p>
 
@@ -78,3 +92,20 @@ export default function Home() {
   );
 }
 
+
+{/* <p className="mt-4 sm:mt-6 text-lg sm:text-xl md:text-2xl text-gray-100 font-semibold">
+      I’m a{" "}
+      <span className="text-blue-400 font-bold font-fredoka">
+        <Typewriter
+          words={["Full Stack Developer", "React Enthusiast", "Problem Solver"]}
+          loop={0}
+          cursor
+          cursorStyle="_"
+          typeSpeed={70}
+          deleteSpeed={50}
+          delaySpeed={1000}
+        />
+      </span>
+      <br />
+      building amazing digital experiences ✨
+    </p> */}
