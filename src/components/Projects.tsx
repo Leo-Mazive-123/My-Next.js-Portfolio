@@ -24,6 +24,15 @@ const projects = [
     image: "/projects/quiz-app.png",
   },
   {
+    title: "Pixel Doctor",
+    description:
+      "A creative website showcasing professional tech repair services, sleek animations, responsive design, and a modern UI built with Next.js and Tailwind CSS. Includes sections like About, Services, Stats, and Contact with smooth scrolling and a scroll-to-top feature.",
+    tech: ["Next.js", "Tailwind CSS", "Framer Motion"],
+    category: "frontend",
+    link: "https://pixel-doctor.vercel.app",
+    image: "/projects/pixel.png",
+  },
+  {
     title: "Quotes Generator",
     description:
       "A sleek web app that generates inspiring quotes dynamically, allowing users to explore and share motivational content effortlessly.",
