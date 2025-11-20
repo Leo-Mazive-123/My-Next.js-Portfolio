@@ -30,7 +30,7 @@ const projects = [
     tech: ["Next.js", "Tailwind CSS", "Framer Motion"],
     category: "frontend",
     link: "https://pixel-doctor.vercel.app",
-    image: "/projects/pixel.png",
+    image: "/projects/pixel doctor.png",
   },
   {
     title: "Quotes Generator",
