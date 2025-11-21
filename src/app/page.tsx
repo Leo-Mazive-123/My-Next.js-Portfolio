@@ -7,6 +7,9 @@ import Skills from "@/components/Skills";
 import Projects from "@/components/Projects";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import ScrollToTop from "@/components/ScrollToTop";
+import ScrollToBottom from "@/components/ScrollToBottom";
+
 
 export default function Home() {
   const scrollToProjects = (e: MouseEvent<HTMLAnchorElement>) => {
@@ -83,6 +86,12 @@ export default function Home() {
 
       {/* Contact */}
       <Contact />
+
+      {/* ScrollToTop */}
+      <ScrollToTop />
+
+      {/* ScrollToBottom */}
+      <ScrollToBottom />
 
       <Footer />
     </main>
